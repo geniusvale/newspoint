@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppWrapper extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -16,13 +17,26 @@ class AppWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
+      appBar: AppBar(
+        // centerTitle: true,
+        title: Text(
+          'NewsPoint',
+          style: TextStyle(
+            fontFamily: GoogleFonts.merriweather().fontFamily,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         onTap: _onTap,
         items: const [
           BottomNavigationBarItem(
             label: 'Today',
-            icon: Icon(Icons.today),
+            icon: Icon(Icons.newspaper),
           ),
           BottomNavigationBarItem(
             label: 'For You',
