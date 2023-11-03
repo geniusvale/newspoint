@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:newspoint/repositories/news_repositories.dart';
 
 class AppWrapper extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -31,7 +30,7 @@ class AppWrapper extends StatelessWidget {
           IconButton(
             onPressed: () async {
               // NewsRepository().fetchAllNews();
-              NewsRepository().fetchForYouNews();
+              // NewsRepository().fetchForYouNews();
             },
             icon: const Icon(Icons.more_vert),
           ),

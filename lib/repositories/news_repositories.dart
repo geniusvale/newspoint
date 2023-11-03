@@ -14,6 +14,7 @@ class NewsRepository {
           //REQUIRED ATLEAST ONE QUERY PARAM
           'sources': 'google-news',
           'pageSize': 5,
+          'language': 'en',
         },
       );
 
