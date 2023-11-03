@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newspoint/model/articlemodel.dart';
+import 'package:newspoint/model/newsmodel.dart';
 import 'package:newspoint/repositories/news_repositories.dart';
 
 part 'news_today_event.dart';

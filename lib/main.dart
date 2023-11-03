@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NewsTodayBloc()..add(FetchNewsToday()),
         ),
         BlocProvider(
-          create: (context) => NewsForYouBloc(),
+          create: (context) => NewsForYouBloc()..add(FetchNewsForYou()),
         ),
       ],
       child: MaterialApp.router(

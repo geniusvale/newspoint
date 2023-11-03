@@ -1,54 +1,50 @@
 import 'package:dio/dio.dart';
-import 'package:newspoint/model/articlemodel.dart';
+import 'package:newspoint/model/newsmodel.dart';
 import 'package:newspoint/services/api.dart';
 
 class NewsRepository {
   //INSTANCE OF API
   final API _api = API();
 
-  Future<List<ArticleModel>> fetchAllNews() async {
+  Future<NewsModel> fetchAllNews() async {
     try {
       final response = await _api.dio.get(
         '/everything',
         queryParameters: {
           //REQUIRED ATLEAST ONE QUERY PARAM
           'sources': 'google-news',
-          'pageSize': 5,
+          // 'pageSize': 5,
           'language': 'en',
         },
       );
 
-      List<ArticleModel> articles = (response.data['articles'] as List)
-          .map((e) => ArticleModel.fromJson(e))
-          .toList();
+      NewsModel news = NewsModel.fromJson(response.data);
 
-      return articles;
+      return news;
     } catch (e) {
       print(e.toString());
-      return [];
+      rethrow;
     }
   }
 
-  Future fetchForYouNews() async {
+  Future<NewsModel> fetchForYouNews() async {
     try {
       final Response response = await _api.dio.get(
         '/top-headlines',
         queryParameters: {
           //REQUIRED ATLEAST ONE QUERY PARAM
           'country': 'id',
-          'pageSize': 5,
+          // 'pageSize': 5,
         },
       );
 
-      List<ArticleModel> articles = (response.data['articles'] as List)
-          .map((e) => ArticleModel.fromJson(e))
-          .toList();
+      NewsModel news = NewsModel.fromJson(response.data);
 
-      print(response.data);
-      return articles;
+      print(news.articles!.length);
+      return news;
     } catch (e) {
       print(e.toString());
-      return [];
+      rethrow;
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:remixicon/remixicon.dart';
 
 class AppWrapper extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -18,7 +19,8 @@ class AppWrapper extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       appBar: AppBar(
-        // centerTitle: true,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
         title: Text(
           'NewsPoint',
           style: TextStyle(
@@ -39,18 +41,21 @@ class AppWrapper extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         onTap: _onTap,
+        selectedItemColor: Colors.black,
+        // showSelectedLabels: false,
+        // showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
             label: 'Today',
-            icon: Icon(Icons.newspaper),
+            icon: Icon(Remix.article_line),
           ),
           BottomNavigationBarItem(
             label: 'For You',
-            icon: Icon(Icons.star),
+            icon: Icon(Remix.star_smile_line),
           ),
           BottomNavigationBarItem(
             label: 'Settings',
-            icon: Icon(Icons.settings),
+            icon: Icon(Remix.settings_line),
           ),
         ],
       ),

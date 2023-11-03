@@ -12,7 +12,7 @@ final class NewsTodayError extends NewsTodayState {
 }
 
 final class NewsTodayLoaded extends NewsTodayState {
-  List<ArticleModel> newsToday;
+  NewsModel newsToday;
 
   NewsTodayLoaded({required this.newsToday});
 }

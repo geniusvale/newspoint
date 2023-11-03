@@ -21,7 +21,7 @@ ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ArticleModel {
   SourceModel? get source => throw _privateConstructorUsedError;
-  dynamic? get author => throw _privateConstructorUsedError;
+  dynamic get author => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $ArticleModelCopyWith<$Res> {
   @useResult
   $Res call(
       {SourceModel? source,
-      dynamic? author,
+      dynamic author,
       String? title,
       String? description,
       String? url,
@@ -84,7 +84,7 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
       author: freezed == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ abstract class _$$ArticleModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {SourceModel? source,
-      dynamic? author,
+      dynamic author,
       String? title,
       String? description,
       String? url,
@@ -175,7 +175,7 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
       author: freezed == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -223,7 +223,7 @@ class _$ArticleModelImpl implements _ArticleModel {
   @override
   final SourceModel? source;
   @override
-  final dynamic? author;
+  final dynamic author;
   @override
   final String? title;
   @override
@@ -290,7 +290,7 @@ class _$ArticleModelImpl implements _ArticleModel {
 abstract class _ArticleModel implements ArticleModel {
   factory _ArticleModel(
       {final SourceModel? source,
-      final dynamic? author,
+      final dynamic author,
       final String? title,
       final String? description,
       final String? url,
@@ -304,7 +304,7 @@ abstract class _ArticleModel implements ArticleModel {
   @override
   SourceModel? get source;
   @override
-  dynamic? get author;
+  dynamic get author;
   @override
   String? get title;
   @override
