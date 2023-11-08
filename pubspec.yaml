@@ -43,6 +43,7 @@ dependencies:
   json_annotation: ^4.8.1
   intl: ^0.18.1
   remixicon: ^1.0.0
+  flutter_inappwebview: ^5.8.0
 
 dev_dependencies:
   flutter_test:

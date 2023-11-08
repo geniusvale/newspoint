@@ -12,9 +12,11 @@ class NewsRepository {
         '/everything',
         queryParameters: {
           //REQUIRED ATLEAST ONE QUERY PARAM
-          'sources': 'google-news',
-          // 'pageSize': 5,
+          'sources':
+              'cnn, cnbc, the-washington-post, espn, reuters, the-wall-street-journal, al-jazeera-english, engadget',
+          'pageSize': 10,
           'language': 'en',
+          'sortBy': 'relevancy',
         },
       );
 
@@ -34,6 +36,7 @@ class NewsRepository {
         queryParameters: {
           //REQUIRED ATLEAST ONE QUERY PARAM
           'country': 'id',
+          'category': 'general',
           // 'pageSize': 5,
         },
       );

@@ -26,52 +26,57 @@ class _TodayScreenState extends State<TodayScreen> {
             );
           }
         },
-        child: ListView(
-          // padding: const EdgeInsets.all(16),
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Fresh news happening today, worldwide.',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 36,
-                  height: 1.2,
+        child: RefreshIndicator(
+          onRefresh: () async {
+            BlocProvider.of<NewsTodayBloc>(context).add(FetchNewsToday());
+          },
+          child: ListView(
+            // padding: const EdgeInsets.all(16),
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  'Fresh news happening today, worldwide.',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 36,
+                    height: 1.2,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 12),
-            BlocBuilder<NewsTodayBloc, NewsTodayState>(
-              builder: (context, state) {
-                if (state is NewsTodayInitial) {
-                  return const Center(child: Text('Initial'));
-                } else if (state is NewsTodayLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is NewsTodayError) {
-                  return const Center(child: Text('ERROR'));
-                } else if (state is NewsTodayLoaded) {
-                  return ListView.separated(
-                    itemCount: state.newsToday.totalResults!,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    separatorBuilder: (context, index) => const Divider(),
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () {
-                        context.push('/detail',
-                            extra: state.newsToday.articles![index]);
-                      },
-                      child: NewsCard(
-                        article: state.newsToday.articles,
-                        index: index,
+              const SizedBox(height: 12),
+              BlocBuilder<NewsTodayBloc, NewsTodayState>(
+                builder: (context, state) {
+                  if (state is NewsTodayInitial) {
+                    return const Center(child: Text('Initial'));
+                  } else if (state is NewsTodayLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is NewsTodayError) {
+                    return const Center(child: Text('ERROR'));
+                  } else if (state is NewsTodayLoaded) {
+                    return ListView.separated(
+                      itemCount: state.newsToday.articles!.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      separatorBuilder: (context, index) => const Divider(),
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          context.push('/detail',
+                              extra: state.newsToday.articles![index]);
+                        },
+                        child: NewsCard(
+                          article: state.newsToday.articles,
+                          index: index,
+                        ),
                       ),
-                    ),
-                  );
-                } else {
-                  return const Center(child: Text('I Don\'t Know'));
-                }
-              },
-            ),
-          ],
+                    );
+                  } else {
+                    return const Center(child: Text('I Don\'t Know'));
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
